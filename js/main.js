@@ -134,7 +134,8 @@ for (let i = 0; i < posts.length; i++) {
             this.classList.toggle("like-button--liked");
             if(this.classList.contains("like-button--liked")){
                 let likeN=posts[i]["likes"]+1  
-                document.getElementById("like-counter-1").innerHTML=likeN
+                document.querySelectorAll("like-counter-1").innerHTML=likeN
+                console.log(document.querySelectorAll("like-counter-1").innerHTML=likeN)
                 
                 
 
