@@ -83,7 +83,8 @@ function creapost() {
     let postMeta__icon =document.createElement("div")
     creaClasse(postMeta__icon,"post-meta__icon")
     console.log(postMeta__icon)
-    postMeta__icon.innerHTML=posts[0].media=
+    let imgProfilo = document.createElement("img")
+    imgProfilo.src=posts[0].author["image"]
 
 
 // append
@@ -91,6 +92,7 @@ function creapost() {
     appendo(postContainer,postHeader)
     appendo(postHeader,postMeta)
     appendo(postMeta,postMeta__icon)
+    appendo(postMeta__icon, imgProfilo)
 
 }
 
