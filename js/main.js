@@ -56,63 +56,101 @@ const posts = [
     }
 ];
 
-//crearci un post
+//crearci un ciclo di post
 let container = document.getElementById("container");
 for (let i = 0; i < posts.length; i++) {
     const element = posts[i];
-    if(posts[i].author["image"] == null){
-        let profilePic= document.getElementsByClassList="profile-pic"
-        profilePic[i].src = "https://unsplash.it/300/300?image=10";
+    // l if non funizona
+    if (element.author["image"] == null) {
+         // post struttura 
+    let post = `<div class="post">
+    <div class="post__header">
+        <div class="post-meta">                    
+            <div class="post-meta__icon">
+                <img class="profile-pic" src="https://unsplash.it/300/300?image=29" alt="${posts[i].author["name"]}">                    
+            </div>
+            <div class="post-meta__data">
+                <div class="post-meta__author">${posts[i].author["name"]}</div>
+                <div class="post-meta__time">${posts[i]["created"]}</div>
+            </div>                    
+        </div>
+    </div>
+    <div class="post__text">${posts[i]["content"]}</div>
+    <div class="post__image">
+        <img src="${posts[i]["media"]}" alt="">
+    </div>
+    <div class="post__footer">
+        <div class="likes js-likes">
+            <div class="likes__cta">
+                <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                    <span class="like-button__label">Mi Piace</span>
+                </a>
+            </div>
+            <div class="likes__counter">
+                Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i]["likes"]}</b> persone
+            </div>
+        </div> 
+    </div>            
+    </div>`
+    container.innerHTML += post;
+    } else { 
+         // post struttura 
+    let post = `<div class="post">
+    <div class="post__header">
+        <div class="post-meta">                    
+            <div class="post-meta__icon">
+                <img class="profile-pic" src="${posts[i].author["image"]}" alt="${posts[i].author["name"]}">                    
+            </div>
+            <div class="post-meta__data">
+                <div class="post-meta__author">${posts[i].author["name"]}</div>
+                <div class="post-meta__time">${posts[i]["created"]}</div>
+            </div>                    
+        </div>
+    </div>
+    <div class="post__text">${posts[i]["content"]}</div>
+    <div class="post__image">
+        <img src="${posts[i]["media"]}" alt="">
+    </div>
+    <div class="post__footer">
+        <div class="likes js-likes">
+            <div class="likes__cta">
+                <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                    <span class="like-button__label">Mi Piace</span>
+                </a>
+            </div>
+            <div class="likes__counter">
+                Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i]["likes"]}</b> persone
+            </div>
+        </div> 
+    </div>            
+    </div>`
+    container.innerHTML += post;
+    let like = document.querySelectorAll(".js-like-button");
+    for (let i = 0; i < like.length; i++) {
+        const likeBtn = like[i];
+        likeBtn.addEventListener("click", function () {
+            this.classList.toggle("like-button--liked");
+            if(this.classList.contains("like-button--liked")){
+                let likeN=posts[i]["likes"]+1  
+                document.getElementById("like-counter-1").innerHTML=likeN
+                
+                
+
+
+            }
+        });
+    }
+    }
+}
+
+
+
+    function creaClasse(oggetto, valore) {
+        oggetto.classList.add(valore)
     }
 
-    let post = `<div class="post">
-<div class="post__header">
-    <div class="post-meta">                    
-        <div class="post-meta__icon">
-            <img class="profile-pic" src="${posts[i].author["image"]}" alt="${posts[i].author["name"]}">                    
-        </div>
-        <div class="post-meta__data">
-            <div class="post-meta__author">${posts[i].author["name"]}</div>
-            <div class="post-meta__time">${posts[i]["created"]}</div>
-        </div>                    
-    </div>
-</div>
-<div class="post__text">${posts[i]["content"]}</div>
-<div class="post__image">
-    <img src="${posts[i]["media"]}" alt="">
-</div>
-<div class="post__footer">
-    <div class="likes js-likes">
-        <div class="likes__cta">
-            <a class="like-button  js-like-button" href="#" data-postid="1">
-                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-                <span class="like-button__label">Mi Piace</span>
-            </a>
-        </div>
-        <div class="likes__counter">
-            Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i]["likes"]}</b> persone
-        </div>
-    </div> 
-</div>            
-</div>`
-container.innerHTML += post;
-let like = document.querySelectorAll(".js-like-button")
-for (let i = 0; i < like.length; i++) {
-    const likeBtn = like[i];
-    likeBtn.addEventListener("click", function() {
-        this.classList.toggle("like-button--liked");
-    });
-}
-}
-
-
-
-
-function creaClasse(oggetto, valore) {
-    oggetto.classList.add(valore)
-}
-
-function appendo(padre,figlio) {
-    padre.appendChild(figlio);
-}
-
+    function appendo(padre, figlio) {
+        padre.appendChild(figlio);
+    }
