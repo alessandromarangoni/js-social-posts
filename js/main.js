@@ -55,3 +55,44 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+
+// prendere gli oggetti all interno dell array
+for (let i = 0; i < posts.length; i++) {
+    
+}
+
+//crearci un post
+let container = document.getElementById("container")
+console.log(container)
+
+function creapost() {
+    // container post
+    let postContainer = document.createElement("div")
+    postContainer.classList.add("post")
+    console.log(postContainer)
+    // header post
+    let postHeader = document.createElement("div")
+    postHeader.classList.add("post__header")
+    console.log(postHeader)
+
+    let postMeta =document.createElement("div")
+    creaClasse(postMeta,"post-meta")
+    console.log(postMeta)
+
+
+
+// append
+    container.appendChild(postContainer)
+    postContainer.appendChild(postHeader)
+}
+
+creapost()
+
+function creaClasse(oggetto, valore) {
+    oggetto.classList.add(valore)
+}
+
+function appendo(padre,figlio) {
+    padre.appendChild(figlio)
+}
