@@ -108,5 +108,5 @@ function creaClasse(oggetto, valore) {
 }
 
 function appendo(padre,figlio) {
-    padre.appendChild(figlio)
+    padre.appendChild(figlio);
 }
