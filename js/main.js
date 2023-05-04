@@ -58,9 +58,13 @@ const posts = [
 
 //crearci un post
 let container = document.getElementById("container");
-console.log(container);
 for (let i = 0; i < posts.length; i++) {
     const element = posts[i];
+    if(posts[i].author["image"] == null){
+        let profilePic= document.getElementsByClassList="profile-pic"
+        profilePic[i].src = "https://unsplash.it/300/300?image=10";
+    }
+
     let post = `<div class="post">
 <div class="post__header">
     <div class="post-meta">                    
@@ -91,13 +95,14 @@ for (let i = 0; i < posts.length; i++) {
     </div> 
 </div>            
 </div>`
-const {image} = posts
-let imgProf =document.getElementsByClassName("profile-pic")
-if (image == null || Image == undefined){
-    console.log(image)
-    imgProf.src="https://unsplash.it/300/300?image=10"
-}
 container.innerHTML += post;
+let like = document.querySelectorAll(".js-like-button")
+for (let i = 0; i < like.length; i++) {
+    const likeBtn = like[i];
+    likeBtn.addEventListener("click", function() {
+        this.classList.toggle("like-button--liked");
+    });
+}
 }
 
 
@@ -110,3 +115,4 @@ function creaClasse(oggetto, valore) {
 function appendo(padre,figlio) {
     padre.appendChild(figlio);
 }
+
