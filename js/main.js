@@ -73,18 +73,25 @@ function creapost() {
     console.log(postContainer)
     // header post
     let postHeader = document.createElement("div")
-    postHeader.classList.add("post__header")
+    creaClasse(postHeader,"post__header")
     console.log(postHeader)
-
+    // postMeta
     let postMeta =document.createElement("div")
     creaClasse(postMeta,"post-meta")
     console.log(postMeta)
-
+    //postMeta__icon 
+    let postMeta__icon =document.createElement("div")
+    creaClasse(postMeta__icon,"post-meta__icon")
+    console.log(postMeta__icon)
+    postMeta__icon.innerHTML=posts[0].media=
 
 
 // append
-    container.appendChild(postContainer)
-    postContainer.appendChild(postHeader)
+    appendo(container,postContainer)
+    appendo(postContainer,postHeader)
+    appendo(postHeader,postMeta)
+    appendo(postMeta,postMeta__icon)
+
 }
 
 creapost()
